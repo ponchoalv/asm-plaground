@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create object file",
+            "type": "shell",
+            "command": "as -o ${fileBasenameNoExtension}.o ${file}"
+        },
+        {
+            "label": "Link object to system sdk",
+            "type": "shell",
+            "command": "ld -o ${fileBasenameNoExtension} ${fileBasenameNoExtension}.o -lSystem -syslibroot `xcrun -sdk macosx --show-sdk-path` -e _start -arch arm64"
+        },
+        {
+            "label": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": ["Create object file", "Link object to system sdk"]
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "dependsOrder": "sequence",
+            "command": "./${fileBasenameNoExtension}",
+            "dependsOn": ["build"]
+        },
+    ]
+}
