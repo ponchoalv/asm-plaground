@@ -16,14 +16,24 @@
         {
             "label": "build",
             "dependsOrder": "sequence",
-            "dependsOn": ["Create object file", "Link object to system sdk"]
+            "dependsOn": [
+                "Create object file",
+                "Link object to system sdk"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "run",
             "type": "shell",
             "dependsOrder": "sequence",
             "command": "./${fileBasenameNoExtension}",
-            "dependsOn": ["build"]
-        },
+            "dependsOn": [
+                "build"
+            ]
+        }
     ]
 }
