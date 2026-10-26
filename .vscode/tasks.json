@@ -33,6 +33,9 @@
             "command": "./${fileBasenameNoExtension}",
             "dependsOn": [
                 "build"
+            ],
+            "problemMatcher": [
+                "$msCompile"
             ]
         }
     ]
